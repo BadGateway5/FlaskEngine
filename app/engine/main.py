@@ -1,23 +1,29 @@
 from utils.utils import create_file, newdir, cd
+from .text import create_db, create_env, create_run, create_blueprint
 
-def create_engine(questions):
+def create_engine(names_modules, names_templates):
 
     # тут еще надо установить виртуальное окружение
     print("CREATE ENGINE")
+    
     newdir('app')
-    create_file('run.py')
-    create_file('db.py')
-    create_file('.env')
+    create_file('run.py', create_run)
+    create_file('db.py', text=create_db)
+    create_file('.env', text=create_env)
     cd('app')
     newdir('templates')
+    cd('templates')
+
+    for name in names_templates:
+        create_file(name + '.html')
+
+    cd('..')
     create_file('__init__.py')
 
-    for name, ans in questions.items():
-        if ans:
-            newdir(name)
-            cd(name)
-            create_file('__init__.py')
-            create_file(name + '.py')
-            cd('..')
-            print(f"CREATE DIR - {name}")
-    
+    for name in names_modules:
+        newdir(name)
+        cd(name)
+        create_file('__init__.py', text=create_blueprint(name))
+        create_file(name + '.py')
+        cd('..')
+        print(f"CREATE DIR - {name}")

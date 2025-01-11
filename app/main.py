@@ -8,21 +8,25 @@ def main():
     
     name = input("enter project name: ")
     
-    questions = {
-        'admin': False,
-        'auth': False,
-    }
+    amount_modules = int(input("amount modules: "))
+    amount_templates = int(input("amount html templates: "))
 
-    for q in questions.keys():
-        ans = int(input(f"use {q} 1 or 0: "))
-        if ans:
-            questions[q] = True
+
+    names_modules = []
+    names_templates = []
+
+    for _ in range(amount_modules):
+        names_modules.append(input("enter name module: "))
+
+    for _ in range(amount_templates):
+        names_templates.append(input('enter name html template: '))
 
 
     cd('..')
+    cd('..')
     newdir(name)
     cd(name)
-    create_engine(questions)
+    create_engine(names_modules, names_templates)
 
 if __name__ == "__main__":
     main()

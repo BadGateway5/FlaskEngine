@@ -1,8 +1,10 @@
 import os
 
-def create_file(name):
+def create_file(name, text=''):
     print(f'CREATE {name}')
-    return open(name, 'w')
+    file = open(name, 'w')
+    file.write(text)
+    file.close()
 
 def newdir(name):
     print(f'CREATE DIR {name}')
@@ -10,3 +12,4 @@ def newdir(name):
 
 def cd(dir):
     os.chdir(dir)
+    print(f'GO TO {os.getcwd()}')

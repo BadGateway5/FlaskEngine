@@ -1,9 +1,15 @@
 from utils.utils import create_file, newdir, cd
 from .text import create_db, create_env, create_run, create_blueprint
+import venv
+import os
 
 def create_engine(names_modules, names_templates):
 
-    # тут еще надо установить виртуальное окружение
+    os.system("virtualenv venv")
+    os.system("venv/bin/pip install Flask")
+    os.system("venv/bin/pip install psycopg2-binary")
+    os.system("venv/bin/pip install python-dotenv")
+
     print("CREATE ENGINE")
     
     newdir('app')

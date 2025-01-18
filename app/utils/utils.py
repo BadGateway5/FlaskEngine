@@ -2,9 +2,8 @@ import os
 
 def create_file(name, text=''):
     print(f'CREATE {name}')
-    file = open(name, 'w')
-    file.write(text)
-    file.close()
+    with open(name, 'w+') as file:
+        file.write(text)
 
 def newdir(name):
     print(f'CREATE DIR {name}')

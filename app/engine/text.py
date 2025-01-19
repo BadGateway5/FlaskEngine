@@ -25,7 +25,7 @@ def create_table_users():
             name VARCHAR(50),
             email VARCHAR(50),
             password TEXT
-        )
+        );
         """)
     
     conn.commit()
@@ -41,9 +41,9 @@ def create_table_posts():
         (
             id SERIAL PRIMARY KEY,
             title VARCHAR(50) NOT NULL,
-            text TEXT(50) NOT NULL,
-            date TIMESTAMP,
-        )
+            text TEXT NOT NULL,
+            date TIMESTAMP
+        );
         """)
     
     conn.commit()
